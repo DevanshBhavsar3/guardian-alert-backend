@@ -13,7 +13,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://guardian-alert-two.vercel.app",
   }),
 );
 app.use(express.json());
