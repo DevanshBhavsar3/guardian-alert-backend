@@ -22,13 +22,21 @@ app.post("/call", async (req, res) => {
   const body = req.body;
 
   try {
-    const res = await client.calls.create({
+    const callRes = await client.calls.create({
       to: body.phoneNo,
       from: "+16403568498",
       twiml: `<Response><Say>There is an accident at ${body.location}. Please reach there quickly.</Say></Response>`,
     });
 
-    console.log(res);
+    if (callRes.status == "no-answer") {
+      return res.json({
+        sucess: false,
+      });
+    }
+
+    return res.json({
+      success: false,
+    });
   } catch (e) {
     console.error(e);
   }
