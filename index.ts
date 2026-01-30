@@ -35,7 +35,7 @@ app.post("/call", async (req, res) => {
     }
 
     return res.json({
-      success: false,
+      success: true,
     });
   } catch (e) {
     console.error(e);
