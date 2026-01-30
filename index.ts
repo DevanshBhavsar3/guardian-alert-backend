@@ -28,7 +28,11 @@ app.post("/call", async (req, res) => {
       twiml: `<Response><Say>There is an accident at ${body.location}. Please reach there quickly.</Say></Response>`,
     });
 
-    if (callRes.status == "no-answer") {
+    if (
+      callRes.status == "no-answer" ||
+      callRes.status == "busy" ||
+      callRes.status == "failed"
+    ) {
       return res.json({
         sucess: false,
       });
